@@ -12,7 +12,10 @@ public class Pasajero {
     public int getNumeroBus(){
         return NumeroBus;
     }
-    public void reasignarBus(int NumeroBus){
+    public String getNombre(){
+        return Nombre;
+    }
+    public void cambiarNumeroBus(int NumeroBus){
         this.NumeroBus = NumeroBus;
     }
 }

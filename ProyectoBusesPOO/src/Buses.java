@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Buses {
     private int NumeroBus;
     private String Destino;
@@ -14,25 +12,25 @@ public class Buses {
     public String getDestino(){
         return Destino;
     }
+    public int getPasajes(){
+        return Pasajes;
+    }
+    public int getNumeroBus(){
+        return NumeroBus;
+    }
     public void sumarPasajero(Pasajero Nuevo){
         ListaPasajeros[Pasajes] = Nuevo;
         Pasajes ++;
-    }
-
-    public int getNumeroBus(){
-        return NumeroBus;
     }
 
     public void quitarPasajeros(){
         Pasajes = 0;
         ListaPasajeros = null;
     }
-    public boolean revisarRentabilidad(){
+    public boolean revisarRentabilidad() {
         return Pasajes >= 20;
     }
-    public int getPasajes(){
-        return Pasajes;
-    }
+
 }
 
 
