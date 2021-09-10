@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Buses {
     private int NumeroBus;
     private String Destino;
     private int Pasajes = 0;
-    private ArrayList <Pasajero> ListaPasajeros; //CAMBIE EL VECTOR PASAJEROS POR UNA LISTA
+    private HashMap <String,Pasajero> mapaListaPasajeros;
     private int[] listaAsientos = {1,2,3,4,5,6,7,8,9,10};
 
     // ------------constructores-----------\\
@@ -13,7 +14,7 @@ public class Buses {
     public Buses(int num, String Destino){
         NumeroBus = num;
         this.Destino = Destino;
-        ListaPasajeros = new ArrayList<>(); // AAAAAA SE INICIA LA LISTA
+        mapaListaPasajeros = new HashMap<>();// AAAAAA SE INICIA LA LISTA
     }
 
     // ----------setters y getters-----------\\
@@ -38,40 +39,51 @@ public class Buses {
 
     // ----------metodoses-----------\\
     public void sumarPasajero(Pasajero Nuevo){
-        definirAsientoAleatorio(Nuevo,listaAsientos);
-        ListaPasajeros.add(Nuevo); //AAAAA
+        definirAsientoAleatorio(Nuevo);
+        mapaListaPasajeros.put(Nuevo.getRut(),Nuevo); //AAAAA
         Pasajes ++;
+
     }
     public void sumarPasajero(Pasajero nuevo, int numAsiento){
-        definirAsientoElegido(nuevo,listaAsientos,numAsiento);
+        definirAsientoElegido(nuevo,numAsiento);
+        mapaListaPasajeros.put(nuevo.getRut(),nuevo); //AAAAA
+        Pasajes ++;
     }
-    public void quitarPasajeros(){Pasajes = 0;
-        ListaPasajeros.clear(); // AAAAAAA Se remueve el pasajero;
+    public void quitarPasajeros(){
+        Pasajes = 0;
+        mapaListaPasajeros.clear();
+        for (int i = 0 ; i < 10 ;i++){
+            listaAsientos[i] = i+1;
+        }
+    }
+    public void quitarPasajero(String rut){
+        mapaListaPasajeros.remove(rut);
     }
     public boolean revisarRentabilidad() {
         return Pasajes >= 20;
     }
-    public void definirAsientoAleatorio(Pasajero nuevo,int[] listaAsientos)
+
+    public void definirAsientoAleatorio(Pasajero nuevo)
     {
         int i = 0;
-        while (listaAsientos[i] != 0){
+        while (listaAsientos[i] == 0){
             i++;
         }
         nuevo.setNumeroDeAsiento(listaAsientos[i]);
         listaAsientos[i] = 0;
     }
-    public void definirAsientoElegido(Pasajero nuevo,int[] listaAsientos,int numAsiento){
-        for (int i = 0 ; i< listaAsientos.length; i++){
-            if (numAsiento == listaAsientos[i])
-            {
-                nuevo.setNumeroDeAsiento(listaAsientos[i]);
-                listaAsientos[i] = 0;
-                break; //En caso de estar disponible el asiento buscado, este se asigna al pasajero
+    public void definirAsientoElegido(Pasajero nuevo,int numAsiento){
+        try{
+            if (numAsiento == listaAsientos[numAsiento-1]){
+                nuevo.setNumeroDeAsiento(numAsiento);
+                listaAsientos[numAsiento-1] = 0;
+            }else {
+                System.out.println("asiento ocupado, se seleccionara otro al azar");
+                definirAsientoAleatorio(nuevo);
             }
+        }catch (Exception e) {
+            System.out.println("asiento no existe, se seleccionara otro al azar");
+            definirAsientoAleatorio(nuevo);
         }
-        definirAsientoAleatorio(nuevo, listaAsientos);
-        // En caso de no encontrar disponibilidad para el asiento se asignara uno de manera aleatorioa
     }
-
-
 }

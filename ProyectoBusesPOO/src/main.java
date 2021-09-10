@@ -18,7 +18,10 @@ public class main {
             System.out.println("Opcion 2 : Agregar Bus");
             System.out.println("Opcion 3 : Mostrar Buses");
             System.out.println("Opcion 4 : Mostrar Pasajeros");
-            System.out.println("Opcion 0 :  Finalizar");
+            System.out.println("Opcion 5 : Asignar bus a pasajero");
+            System.out.println("Opcion 6 : Eliminar Bus");
+            System.out.println("Opcion 7 : Eliminar Pasajero");
+            System.out.println("Opcion 0 : Finalizar");
             opcion = Integer.parseInt(usuario.readLine());
             switch(opcion)
             {
@@ -29,8 +32,11 @@ public class main {
                     System.out.println("Ingrese el rut del pasajero: ");
                     nuevo.setRut(usuario.readLine());
                     System.out.println("Ingrese el numero de bus:");
-                    nuevo.setNumeroBus(Integer.parseInt(usuario.readLine()));
+                    nuevo.setNumeroBus(usuario.readLine());
+                    System.out.println("Ingrese el numero de asiento:");
+                    nuevo.setNumeroDeAsiento(Integer.parseInt(usuario.readLine()));
                     Gerencia.sumarPasajero(nuevo);
+                    break;
                 case 2 :
                     Buses busNuevo = new Buses();
                     System.out.println("Ingrese el numero del Bus: ");
@@ -38,12 +44,13 @@ public class main {
                     System.out.println("Ingrese el destino del bus: ");
                     busNuevo.setDestino(usuario.readLine());
                     Gerencia.sumarBus(busNuevo);
-
+                    break;
                 case 3 :
-                    Gerencia.getListaBuses();
-
+                    System.out.println(Gerencia.mostrarBuses());
+                    break;
                 case 4 :
-                    Gerencia.getListaPasajeros();
+                    System.out.println(Gerencia.mostrarPasajeros());
+                    break;
                 case 5 :
                     System.out.println("Ingrese rut pasajero");
                     String destino, rut;
@@ -51,13 +58,19 @@ public class main {
                     System.out.println("Ingrese el destino");
                     destino = usuario.readLine();
                     Gerencia.asignarBus(rut,destino);
-
-
+                    break;
+                case 6 :
+                    System.out.println("Ingrese el numero del bus que desa eliminar");
+                    Gerencia.eliminarBus(Integer.parseInt(usuario.readLine()));
+                case 7 :
+                    System.out.println("Ingrese el rut del pasajero que desea eliminar");
+                    Gerencia.eliminarPasajero(usuario.readLine());
                 case 0:
                     System.out.println("Bye <3");
                     break;
                 default:
                     System.out.println("Opcion ingresada no es valida");
+                    break;
             }
         }while( opcion != 0 );
 

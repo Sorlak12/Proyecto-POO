@@ -1,6 +1,6 @@
 public class Pasajero {
     private String Nombre, Rut;
-    private int NumeroBus;
+    private int NumeroBus = 0;
     private int NumeroDeAsiento;
 
 
@@ -29,11 +29,21 @@ public class Pasajero {
     public String getNombre(){
         return Nombre;
     }
+    public int getNumeroDeAsiento(){
+        return NumeroDeAsiento;
+    }
     public void setNombre(String nombre) {
         Nombre = nombre;
     }
     public void setNumeroBus(int numeroBus) {
         NumeroBus = numeroBus;
+    }
+    public void setNumeroBus(String numeroBus) {
+        try{
+            NumeroBus = Integer.parseInt(numeroBus);
+        }catch (NumberFormatException e) {
+            System.out.println("Numero bus no es un numero");
+        }
     }
     public void setRut(String rut) {
         Rut = rut;
