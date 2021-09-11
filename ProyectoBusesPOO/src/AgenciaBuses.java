@@ -64,6 +64,7 @@ public class AgenciaBuses {
         for (int i = 0 ; i < listaBuses.size(); i++){
             if (listaBuses.get(i).getNumeroBus() == numeroBus) {
                 listaBuses.remove(i);
+                System.out.println("El bus ha sido eliminado correctamente");
                 return;
             }
         }
@@ -75,6 +76,7 @@ public class AgenciaBuses {
                 mapaListaBuses.get(mapaListaPasajeros.get(rutPasajero).getNumeroBus()).quitarPasajero(rutPasajero);
             }
             mapaListaPasajeros.remove(rutPasajero);
+            System.out.println("El pasajero se elimino correctamente");
             return;
         }
         System.out.println("El pasajero selccionado no se encontro");
