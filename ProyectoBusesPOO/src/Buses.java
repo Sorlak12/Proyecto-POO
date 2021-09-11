@@ -37,7 +37,7 @@ public class Buses {
         return Destino;
     }
 
-    // ----------metodoses-----------\\
+    // ----------metodos-----------\\
     public void sumarPasajero(Pasajero Nuevo){
         definirAsientoAleatorio(Nuevo);
         mapaListaPasajeros.put(Nuevo.getRut(),Nuevo); //AAAAA

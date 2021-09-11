@@ -45,7 +45,7 @@ public class AgenciaBuses {
 
     public void asignarBus(Pasajero nuevo){
         if(mapaListaBuses.get(nuevo.getNumeroBus()) != null){
-             mapaListaBuses.get(nuevo.getNumeroBus()).definirAsientoElegido(nuevo, nuevo.getNumeroDeAsiento());//creo que seria solo 1
+             mapaListaBuses.get(nuevo.getNumeroBus()).sumarPasajero(nuevo, nuevo.getNumeroDeAsiento());//creo que seria solo 1
         }else {
             System.out.println("El bus no existe");
         }
@@ -54,7 +54,7 @@ public class AgenciaBuses {
     public void asignarBus(String rut,String destino){
         for (Buses bus: listaBuses){
             if(bus.getDestino().compareTo(destino)== 0){
-                bus.sumarPasajero(mapaListaPasajeros.get(rut));
+                mapaListaBuses.get(bus.getNumeroBus()).sumarPasajero(mapaListaPasajeros.get(rut));
                 return;
             }
         }
@@ -67,10 +67,17 @@ public class AgenciaBuses {
                 return;
             }
         }
+        System.out.println("No se encontro el bus seleccionado");
     }
     public void eliminarPasajero(String rutPasajero){
-        mapaListaPasajeros.remove(rutPasajero);
-        mapaListaBuses.get(mapaListaPasajeros.get(rutPasajero).getNumeroBus()).quitarPasajero(rutPasajero);
+        if (mapaListaPasajeros.get(rutPasajero) != null) {
+            if(mapaListaPasajeros.get(rutPasajero).getNumeroBus() != 0) {
+                mapaListaBuses.get(mapaListaPasajeros.get(rutPasajero).getNumeroBus()).quitarPasajero(rutPasajero);
+            }
+            mapaListaPasajeros.remove(rutPasajero);
+            return;
+        }
+        System.out.println("El pasajero selccionado no se encontro");
     }
 }
 

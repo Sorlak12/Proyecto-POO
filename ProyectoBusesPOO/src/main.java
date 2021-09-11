@@ -38,11 +38,11 @@ public class main {
                     Gerencia.sumarPasajero(nuevo);
                     break;
                 case 2 :
-                    Buses busNuevo = new Buses();
                     System.out.println("Ingrese el numero del Bus: ");
-                    busNuevo.setNumeroBus(Integer.parseInt(usuario.readLine()));
+                    int numeroBus = Integer.parseInt(usuario.readLine());
                     System.out.println("Ingrese el destino del bus: ");
-                    busNuevo.setDestino(usuario.readLine());
+                    String destinoBus = usuario.readLine();
+                    Buses busNuevo = new Buses(numeroBus,destinoBus);
                     Gerencia.sumarBus(busNuevo);
                     break;
                 case 3 :
@@ -53,18 +53,20 @@ public class main {
                     break;
                 case 5 :
                     System.out.println("Ingrese rut pasajero");
-                    String destino, rut;
+                    String destinoPasajero, rut;
                     rut = usuario.readLine();
                     System.out.println("Ingrese el destino");
-                    destino = usuario.readLine();
-                    Gerencia.asignarBus(rut,destino);
+                    destinoPasajero = usuario.readLine();
+                    Gerencia.asignarBus(rut,destinoPasajero);
                     break;
                 case 6 :
                     System.out.println("Ingrese el numero del bus que desa eliminar");
                     Gerencia.eliminarBus(Integer.parseInt(usuario.readLine()));
+                    break;
                 case 7 :
                     System.out.println("Ingrese el rut del pasajero que desea eliminar");
                     Gerencia.eliminarPasajero(usuario.readLine());
+                    break;
                 case 0:
                     System.out.println("Bye <3");
                     break;
