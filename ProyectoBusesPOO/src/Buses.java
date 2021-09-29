@@ -38,6 +38,14 @@ public class Buses {
     }
 
     // ----------metodos-----------\\
+    public String mostrarPasajerosBus(){
+        String texto = 	"\tLISTA PASAJEROS EN EL BUS\n";
+        for(String rut : mapaListaPasajeros.keySet()){
+            texto += "Nombre Pasajero:" + mapaListaPasajeros.get(rut).getNombre() + "\tNumero de bus: " + mapaListaPasajeros.get(rut).getNumeroBus()  + "\n";
+        }
+        return texto;
+    }
+
     public void sumarPasajero(Pasajero Nuevo){
         definirAsientoAleatorio(Nuevo);
         mapaListaPasajeros.put(Nuevo.getRut(),Nuevo); //AAAAA

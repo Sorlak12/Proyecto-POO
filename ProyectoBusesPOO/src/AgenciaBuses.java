@@ -9,7 +9,7 @@ public class AgenciaBuses {
 
     // ------------constructores-----------\\
     public AgenciaBuses(){
-        listaBuses = new ArrayList<Buses>();
+        listaBuses = new ArrayList<>();
         mapaListaPasajeros = new HashMap<>();
         mapaListaBuses = new HashMap<>();
     }
@@ -19,8 +19,9 @@ public class AgenciaBuses {
     public String mostrarBuses(){
         String texto = "\tLISTA DE BUSES\n";
         for (Buses bus: listaBuses) {
-            texto += "Número de Bus: " + bus.getNumeroBus() + "\tDestino: " + bus.getDestino() + "\n";
+            texto += "Número de Bus: " + bus.getNumeroBus() + "\tDestino: " + bus.getDestino() + bus.mostrarPasajerosBus()+ "\n";
         }
+
         return texto;
     }
     public String mostrarPasajeros(){
