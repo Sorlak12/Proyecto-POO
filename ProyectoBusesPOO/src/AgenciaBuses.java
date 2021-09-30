@@ -19,7 +19,7 @@ public class AgenciaBuses {
     public String mostrarBuses(){
         String texto = "\tLISTA DE BUSES\n";
         for (Buses bus: listaBuses) {
-            texto += "Número de Bus: " + bus.getNumeroBus() + "\tDestino: " + bus.getDestino() + bus.mostrarPasajerosBus()+ "\n";
+            texto += "Número de Bus: " + bus.getNumeroBus() + "\tDestino: " + bus.getDestino() + "\n" + bus.mostrarPasajerosBus()+ "\n";
         }
 
         return texto;
@@ -27,7 +27,7 @@ public class AgenciaBuses {
     public String mostrarPasajeros(){
         String texto = "\tLISTA PASAJEROS\n";
         for(String rut : mapaListaPasajeros.keySet()){
-            texto += "Nombre Pasajero:" + mapaListaPasajeros.get(rut).getNombre() + "\tNumero de bus: " + mapaListaPasajeros.get(rut).getNumeroBus()  + "\n";
+            texto += "Nombre Pasajero: " + mapaListaPasajeros.get(rut).getNombre() + "\tNumero de bus: " + mapaListaPasajeros.get(rut).getNumeroBus()  + "\n";
         }
         return texto;
     }
@@ -81,6 +81,18 @@ public class AgenciaBuses {
             return;
         }
         System.out.println("El pasajero selccionado no se encontro");
+    }
+    public void obtenerNumeroBusPasajero(String rut){
+        if (mapaListaPasajeros.get(rut) != null)
+        {
+            int numeroBus = mapaListaPasajeros.get(rut).getNumeroBus();
+            if (numeroBus != 0) {
+                System.out.println("El pasajero se encuentra en el bus N°" + numeroBus);
+            } else {
+                System.out.println("El pasajero aun no ha sido asignado a un bus");
+            }
+        }
+        else System.out.println("El pasajero ingreasdo no existe, intente nuevamente");
     }
 }
 

@@ -1,6 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import javax.naming.ldap.spi.LdapDnsProvider;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,6 +20,7 @@ public class main {
             System.out.println("Opcion 5 : Asignar bus a pasajero");
             System.out.println("Opcion 6 : Eliminar Bus");
             System.out.println("Opcion 7 : Eliminar Pasajero");
+            System.out.println("Opcion 8 : Buscar numero de bus Pasajero");
             System.out.println("Opcion 0 : Finalizar");
             opcion = Integer.parseInt(usuario.readLine());
             switch(opcion)
@@ -67,6 +67,9 @@ public class main {
                     System.out.println("Ingrese el rut del pasajero que desea eliminar");
                     Gerencia.eliminarPasajero(usuario.readLine());
                     break;
+                case  8:
+                    System.out.println("Ingrese el rut del pasajero: ");
+                    Gerencia.obtenerNumeroBusPasajero(usuario.readLine());
                 case 0:
                     System.out.println("Bye <3");
                     break;
@@ -76,7 +79,27 @@ public class main {
             }
         }while( opcion != 0 );
 
+        try{
+            String ruta = "reporte.txt";
+            File archivo = new File(ruta);
+            if (!archivo.exists()){
+                if (archivo.createNewFile()){
+                    FileWriter fw = new FileWriter(archivo);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw.write(Gerencia.mostrarPasajeros());
+                    bw.write(Gerencia.mostrarBuses());
+                    bw.close();
+                    System.out.println("El archivo ha sido creado correctamente");
+                }
+                else System.out.println("El arhivo no se pudo crear");
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
+
 
  /* el siguiente metodo esta incompleto, se dejo como intento de llenar el mapa, pero se decidio ir por otro metodo
 
