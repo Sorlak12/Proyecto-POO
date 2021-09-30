@@ -1,7 +1,4 @@
-import javax.naming.ldap.spi.LdapDnsProvider;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class main {
     public static void main(String[] args)throws IOException {
