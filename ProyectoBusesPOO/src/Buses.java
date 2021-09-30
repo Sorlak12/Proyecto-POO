@@ -41,7 +41,7 @@ public class Buses {
     public String mostrarPasajerosBus(){
         String texto = 	"\tLISTA PASAJEROS EN EL BUS\n";
         for(String rut : mapaListaPasajeros.keySet()){
-            texto += "Nombre Pasajero:" + mapaListaPasajeros.get(rut).getNombre() + "\tNumero de bus: " + mapaListaPasajeros.get(rut).getNumeroBus()  + "\n";
+            texto += "Nombre Pasajero:" + mapaListaPasajeros.get(rut).getNombre() + "Rut:" + mapaListaPasajeros.get(rut).getRut()+"\n";
         }
         return texto;
     }
