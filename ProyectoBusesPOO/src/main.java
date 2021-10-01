@@ -90,11 +90,18 @@ public class main {
                 }
                 else System.out.println("El arhivo no se pudo crear");
             }
+            else {
+                FileWriter fw = new FileWriter(archivo);
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(Gerencia.mostrarPasajeros());
+                bw.write(Gerencia.mostrarBuses());
+                bw.close();
+                System.out.println("El archivo se ha sobreescrito");
+            }
         }
         catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
 

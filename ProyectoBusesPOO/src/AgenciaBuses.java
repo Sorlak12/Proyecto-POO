@@ -19,7 +19,7 @@ public class AgenciaBuses {
     public String mostrarBuses(){
         String texto = "\tLISTA DE BUSES\n";
         for (Buses bus: listaBuses) {
-            texto += "Número de Bus: " + bus.getNumeroBus() + "\tDestino: " + bus.getDestino() + "\n" + bus.mostrarPasajerosBus()+ "\n";
+            texto += "Número de Bus: " + bus.getNumeroBus() + " Destino: " + bus.getDestino() + "\n" + bus.mostrarPasajerosBus()+ "\n";
         }
 
         return texto;
@@ -27,7 +27,7 @@ public class AgenciaBuses {
     public String mostrarPasajeros(){
         String texto = "\tLISTA PASAJEROS\n";
         for(String rut : mapaListaPasajeros.keySet()){
-            texto += "Nombre Pasajero: " + mapaListaPasajeros.get(rut).getNombre() + "\tNumero de bus: " + mapaListaPasajeros.get(rut).getNumeroBus()  + "\n";
+            texto += "Nombre Pasajero: " + mapaListaPasajeros.get(rut).getNombre() + " Numero de bus: " + mapaListaPasajeros.get(rut).getNumeroBus()  + "\n";
         }
         return texto;
     }
