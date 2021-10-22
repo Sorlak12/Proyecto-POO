@@ -1,40 +1,32 @@
-public class Pasajero {
-    private String Nombre, Rut;
+public abstract class Pasajero extends Persona  {
     private int NumeroBus = 0;
     private int NumeroDeAsiento;
+    private int PorcentajeDescuento;
 
 
     // ----------constructores----------\\
-    public Pasajero(String Nombre, String Rut, int NumeroBus){
-        this.Nombre = Nombre;
-        this.Rut = Rut;
+    public Pasajero(int NumeroBus){
         this.NumeroBus = NumeroBus;
     }
-    public Pasajero(String Nombre, String Rut, int NumeroBus, int NumeroDeAsiento){
-        this.Nombre = Nombre;
-        this.Rut = Rut;
+    public Pasajero( String nombre, String Rut, int anyoNacimiento, int mesNacimiento, int diaNacimiento, int NumeroBus, int NumeroDeAsiento){
+        super(nombre,Rut,diaNacimiento,mesNacimiento,anyoNacimiento);
         this.NumeroBus = NumeroBus;
         this.NumeroDeAsiento = NumeroDeAsiento;
     }
     public Pasajero(){
     }
 
-    // ----------setters y getters-----------\\
-    public String getRut(){
-        return Rut;
-    }
     public int getNumeroBus(){
         return NumeroBus;
     }
-    public String getNombre(){
-        return Nombre;
+    public int getPorcentajeDescuento(){
+        return PorcentajeDescuento;
     }
+
     public int getNumeroDeAsiento(){
         return NumeroDeAsiento;
     }
-    public void setNombre(String nombre) {
-        Nombre = nombre;
-    }
+
     public void setNumeroBus(int numeroBus) {
         NumeroBus = numeroBus;
     }
@@ -45,9 +37,7 @@ public class Pasajero {
             System.out.println("Numero bus no es un numero");
         }
     }
-    public void setRut(String rut) {
-        Rut = rut;
-    }
+
     public void setNumeroDeAsiento(int NumeroDeAsiento) {
         this.NumeroDeAsiento = NumeroDeAsiento;
     }
@@ -58,5 +48,17 @@ public class Pasajero {
         this.NumeroBus = NumeroBus;
     }
 
+    public void cambiarNumeroDeAsiento(int NumeroDeAsiento){
+        this.NumeroDeAsiento = NumeroDeAsiento;
+    }
+    public String mostrarDatos(){
+        return "Nombre: " + getNombre() +"\n" + "Rut:" + getRut() + "\n" +  "Fecha de Nacimiento"+
+                getDiaNacimiento() + "/" + getMesNacimiento() + "/" + getAnyoNacimiento() +
+                "\n" + "Numero de bus; " + getNumeroBus() + "Numero de Asiento" + getNumeroDeAsiento();
+    }
+    public void setPorcentajeDescuento(){
+        PorcentajeDescuento = obtenerPorcentajeDescuento();
+    }
+    public abstract int obtenerPorcentajeDescuento();
 
 }

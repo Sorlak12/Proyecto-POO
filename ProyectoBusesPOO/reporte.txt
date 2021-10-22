@@ -1,20 +1,5 @@
 	LISTA PASAJEROS
-Nombre Pasajero: juan	Numero de bus: 1
-Nombre Pasajero: esteban	Numero de bus: 1
-Nombre Pasajero: daniel	Numero de bus: 2
-Nombre Pasajero: felipe	Numero de bus: 1
-Nombre Pasajero: pedro	Numero de bus: 2
-Nombre Pasajero: joaquin	Numero de bus: 2
 	LISTA DE BUSES
-Número de Bus: 1	Destino: melipilla
+Número de Bus: 1 Destino: qqqqq
 	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: juan Rut: 12
-Nombre Pasajero: esteban Rut: 123
-Nombre Pasajero: felipe Rut: 12345
-
-Número de Bus: 2	Destino: la serena
-	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: daniel Rut: 123456
-Nombre Pasajero: pedro Rut: 10101
-Nombre Pasajero: joaquin Rut: 129219
 

@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Buses {
+public class Buses implements DatosAgencia{
+    //Atributos//
+    private  Conductor conductor;
     private int NumeroBus;
     private String Destino;
     private int Pasajes = 0;
@@ -11,7 +13,8 @@ public class Buses {
     // ------------constructores-----------\\
     public Buses(){
     }
-    public Buses(int num, String Destino){
+    public Buses(int num, String Destino,Conductor conductor){
+        this.conductor = conductor;
         NumeroBus = num;
         this.Destino = Destino;
         mapaListaPasajeros = new HashMap<>();// AAAAAA SE INICIA LA LISTA
@@ -36,6 +39,10 @@ public class Buses {
     public String getDestino(){
         return Destino;
     }
+    public void setConductor(Conductor conductor){
+        this.conductor = conductor;
+    }
+    public Conductor getConductor(){return conductor;}
 
     // ----------metodos-----------\\
     public String mostrarPasajerosBus(){
@@ -51,27 +58,27 @@ public class Buses {
         mapaListaPasajeros.put(Nuevo.getRut(),Nuevo); //AAAAA
         Pasajes ++;
 
-    }
+    } //Agrega un pasajero a un bus
     public void sumarPasajero(Pasajero nuevo, int numAsiento){
         definirAsientoElegido(nuevo,numAsiento);
         mapaListaPasajeros.put(nuevo.getRut(),nuevo); //AAAAA
         Pasajes ++;
-    }
+    } //Agrega un pasajero con un asiento escojido
     public void quitarPasajeros(){
         Pasajes = 0;
         mapaListaPasajeros.clear();
         for (int i = 0 ; i < 10 ;i++){
             listaAsientos[i] = i+1;
         }
-    }
+    }//elimina todos los pasajeros de un bus
     public void quitarPasajero(String rut){
         mapaListaPasajeros.remove(rut);
-    }
+    } //elimina un pasajero en especifico de un bus
     public boolean revisarRentabilidad() {
         return Pasajes >= 20;
-    }
+    } //revisa que el viaje sea rentable
 
-    public void definirAsientoAleatorio(Pasajero nuevo)
+    public void definirAsientoAleatorio(Pasajero nuevo) //asigna un asiento aleatorio a pasajero que no especifica su numero de asiento
     {
         int i = 0;
         while (listaAsientos[i] == 0){
@@ -93,5 +100,10 @@ public class Buses {
             System.out.println("asiento no existe, se seleccionara otro al azar");
             definirAsientoAleatorio(nuevo);
         }
+    }// asigna al pasajero el numero de asiento escojido
+
+    @Override
+    public String mostrarDatos() { // mumuetras los datos del bus
+        return "Número de Bus: " + NumeroBus + " Destino: " + Destino + "\n" + mostrarPasajerosBus()+ "\n";
     }
 }
