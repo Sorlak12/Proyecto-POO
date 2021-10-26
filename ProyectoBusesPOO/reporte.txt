@@ -1,5 +1,31 @@
 	LISTA PASAJEROS
+Nombre: juan gomez
+Rut:3.333.333-3
+Fecha de Nacimiento: 2/2/2001
+Numero de bus: 1 Numero de Asiento: 2
+Nombre: Enrique Muñoz
+Rut:7.837.238-2
+Fecha de Nacimiento: 15/3/1945
+Numero de bus: 2 Numero de Asiento: 1
+Nombre: daniel sotello
+Rut:2.222.222-2
+Fecha de Nacimiento: 2/2/2001
+Numero de bus: 3 Numero de Asiento: 1
+Nombre: Daniel Gomez
+Rut:19.367.118.7
+Fecha de Nacimiento: 24/12/2001
+Numero de bus: 1 Numero de Asiento: 1
 	LISTA DE BUSES
-Número de Bus: 1 Destino: qqqqq
+Número de Bus: 1 Destino: La Serena
 	LISTA PASAJEROS EN EL BUS
+Nombre Pasajero: juan gomez Rut: 3.333.333-3
+Nombre Pasajero: Daniel Gomez Rut: 19.367.118.7
+
+Número de Bus: 2 Destino: Valparaiso
+	LISTA PASAJEROS EN EL BUS
+Nombre Pasajero: Enrique Muñoz Rut: 7.837.238-2
+
+Número de Bus: 3 Destino: los angeles
+	LISTA PASAJEROS EN EL BUS
+Nombre Pasajero: daniel sotello Rut: 2.222.222-2
 

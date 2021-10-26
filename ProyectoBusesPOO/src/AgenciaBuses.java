@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.*;
+import java.util.Scanner;
+import java.io.File;
+
 
 public class AgenciaBuses {
     //Atributos//
@@ -139,6 +143,88 @@ public class AgenciaBuses {
             mapaListaBuses.get(numeroBus).getConductor().setNumeroDeBus(0);
         mapaListaBuses.get(numeroBus).setConductor(listaConductores.get(rutConductorNuevo));
         listaConductores.get(rutConductorNuevo).setNumeroDeBus(numeroBus);
+    }
+
+    public void llenarBuses() throws FileNotFoundException {
+        Scanner archivo = new Scanner(new File("BusesAgencia.txt"));
+        while (archivo.hasNext()){
+            String str = archivo.nextLine();
+            String[] DatosBuses;
+            DatosBuses = str.split(",");
+            int  numeroBus = Integer.parseInt(DatosBuses[0]);
+            String DestinoBus = DatosBuses[1];
+            String nombreConductor = DatosBuses[2];
+            String rutConductor = DatosBuses[3];
+            Conductor conductor = new Conductor(nombreConductor,rutConductor,numeroBus);
+            Buses bus = new Buses(numeroBus,DestinoBus,conductor);
+            sumarBus(bus,conductor);
+        }
+    }
+    public void llenarPasajeros() throws FileNotFoundException {
+        Scanner archivo = new Scanner(new File("PasajerosAgencia.txt"));
+        while (archivo.hasNext()){
+            String str = archivo.nextLine();
+            String[] DatosPasajeros = str.split(",");
+            String tipoPasajero = DatosPasajeros[0];
+            String nombrePasajero = DatosPasajeros[1];
+            String rutPasajero = DatosPasajeros[2];
+
+            int numeroBus = Integer.parseInt(DatosPasajeros[3]);
+            int numeroAsiento = Integer.parseInt(DatosPasajeros[4]);
+            int anyoNacimiento = Integer.parseInt(DatosPasajeros[5]);
+            int mesNacimiento = Integer.parseInt(DatosPasajeros[6]);
+            int diaNacimiento = Integer.parseInt(DatosPasajeros[7]);
+            Pasajero nuevo;
+            switch (tipoPasajero) {
+                case "estudiante" -> {
+                    nuevo = new Estudiante(nombrePasajero, rutPasajero, anyoNacimiento, mesNacimiento,
+                            diaNacimiento, numeroBus, numeroAsiento);
+                    sumarPasajero(nuevo);
+                }
+                case "Adulto mayor" -> {
+                    nuevo = new AdultoMayor(nombrePasajero, rutPasajero, anyoNacimiento, mesNacimiento,
+                            diaNacimiento, numeroBus, numeroAsiento);
+                    sumarPasajero(nuevo);
+                }
+                default -> {
+                    nuevo = new PasajeroComun(nombrePasajero, rutPasajero, anyoNacimiento, mesNacimiento,
+                            diaNacimiento, numeroBus, numeroAsiento);
+                    sumarPasajero(nuevo);
+                }
+            }
+        }
+    }
+    public String imprimirPasajerosEnArchivo(){
+        String texto = "";
+        for(String rut : mapaListaPasajeros.keySet()){
+            if (mapaListaPasajeros.get(rut).getPorcentajeDescuento() == 15){
+                texto+= "estudiante," + mapaListaPasajeros.get(rut).getNombre() + "," + mapaListaPasajeros.get(rut).getRut()
+                        + "," + mapaListaPasajeros.get(rut).getNumeroBus() + "," + mapaListaPasajeros.get(rut).getNumeroDeAsiento() + ","
+                        +  mapaListaPasajeros.get(rut).getAnyoNacimiento() + "," +  mapaListaPasajeros.get(rut).getMesNacimiento()
+                         + "," +  mapaListaPasajeros.get(rut).getDiaNacimiento() + "\n";
+            }
+            else
+                if (mapaListaPasajeros.get(rut).getPorcentajeDescuento() == 20){
+                texto+= "Adulto mayor," + mapaListaPasajeros.get(rut).getNombre() + "," + mapaListaPasajeros.get(rut).getRut()
+                        + "," + mapaListaPasajeros.get(rut).getNumeroBus() + "," + mapaListaPasajeros.get(rut).getNumeroDeAsiento() + ","
+                        +  mapaListaPasajeros.get(rut).getAnyoNacimiento() + "," +  mapaListaPasajeros.get(rut).getMesNacimiento()
+                        + "," +  mapaListaPasajeros.get(rut).getDiaNacimiento() + "\n";
+            }
+                else
+                    texto+= "Pasajero comun," + mapaListaPasajeros.get(rut).getNombre() + "," + mapaListaPasajeros.get(rut).getRut()
+                            + "," + mapaListaPasajeros.get(rut).getNumeroBus() + "," + mapaListaPasajeros.get(rut).getNumeroDeAsiento() + ","
+                            +  mapaListaPasajeros.get(rut).getAnyoNacimiento() + "," +  mapaListaPasajeros.get(rut).getMesNacimiento()
+                            + "," +  mapaListaPasajeros.get(rut).getDiaNacimiento() + "\n";
+        }
+        return texto;
+    }
+    public String imprimirBusesArchivo() {
+        String texto = "";
+        for (int Bus : mapaListaBuses.keySet()) {
+            texto+= mapaListaBuses.get(Bus).getNumeroBus() + "," + mapaListaBuses.get(Bus).getDestino() + "," +
+                    mapaListaBuses.get(Bus).getConductor().getNombre() + "," + mapaListaBuses.get(Bus).getConductor().getRut() + "\n";
+        }
+        return texto;
     }
 }
 

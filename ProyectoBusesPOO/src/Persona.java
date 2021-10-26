@@ -9,7 +9,7 @@ public class Persona implements DatosAgencia {
     //Constructores//
     public Persona(){};
 
-    public Persona(String nombre, String rut,int diaNacimiento, int mesNacimiento, int anyoNacimiento){
+    public Persona(String nombre, String rut,int anyoNacimiento, int mesNacimiento, int diaNacimiento ){
         this.nombre = nombre;
         this.rut = rut;
         this.diaNacimiento = diaNacimiento;

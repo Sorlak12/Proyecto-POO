@@ -12,6 +12,8 @@ public class main {
 
         BufferedReader usuario = new BufferedReader(new InputStreamReader (System.in));
         AgenciaBuses Gerencia = new AgenciaBuses();
+        Gerencia.llenarBuses();
+        Gerencia.llenarPasajeros();
 
 
         do {//mostramos las diferentes opciones a escoger
@@ -29,20 +31,16 @@ public class main {
             System.out.println("opcion 12 : Cambiar Conductor de bus");
             System.out.println("Opcion 0 : Finalizar");
             opcion = Integer.parseInt(usuario.readLine());
-            switch(opcion)
-            {
-                case 1 : //inicializamos una variable pasajero y luego llenamos sus datos
+            switch (opcion) {
+                case 1 -> { //inicializamos una variable pasajero y luego llenamos sus datos
                     Pasajero nuevo = new PasajeroComun();
                     System.out.println("Ingrese si pasajero es \"estudiante\" o \"Adulto mayor\" o \"pasajero comun\"");
                     String opcionPasajero = usuario.readLine();
-                    if(opcionPasajero.compareTo("estudiante") == 0)
-                    {
+                    if (opcionPasajero.compareTo("estudiante") == 0) {
                         nuevo = new Estudiante();
+                    } else if (opcionPasajero.compareTo("Adulto Mayor") == 0) {
+                        nuevo = new AdultoMayor();
                     }
-                    else
-                        if(opcionPasajero.compareTo("Adulto Mayor") == 0) {
-                            nuevo = new AdultoMayor();
-                        }
                     System.out.println("Ingrese el nombre del pasajero: ");
                     nuevo.setNombre(usuario.readLine());
                     System.out.println("Ingrese el rut del pasajero: ");
@@ -60,9 +58,9 @@ public class main {
                     nuevo.setDiaNacimiento(Integer.parseInt(usuario.readLine()));
                     nuevo.setPorcentajeDescuento();
                     Gerencia.sumarPasajero(nuevo);
-                    break;
-                case 2 ://inicializamos una variable conductor y una de bus para agregarlos
-                    Conductor conductor= new Conductor();
+                }
+                case 2 -> {//inicializamos una variable conductor y una de bus para agregarlos
+                    Conductor conductor = new Conductor();
                     System.out.println("Ingrese el numero del Bus: ");
                     int numeroBus = Integer.parseInt(usuario.readLine());
                     System.out.println("Ingrese el destino del bus: ");
@@ -72,67 +70,60 @@ public class main {
                     System.out.println("Ingrese rut del conductor: ");
                     conductor.setRut(usuario.readLine());
                     conductor.setNumeroDeBus(numeroBus);
-                    Buses busNuevo = new Buses(numeroBus,destinoBus,conductor);
-                    Gerencia.sumarBus(busNuevo,conductor);
-                    break;
-                case 3 ://mostramos los buses que tenemos
-                    System.out.println(Gerencia.mostrarBuses());
-                    break;
-                case 4 ://mostramos todos los pasajeros
-                    System.out.println(Gerencia.mostrarPasajeros());
-                    break;
-                case 5 ://asignamos a un pasajero un nuevo bus
+                    Buses busNuevo = new Buses(numeroBus, destinoBus, conductor);
+                    Gerencia.sumarBus(busNuevo, conductor);
+                }
+                case 3 ->//mostramos los buses que tenemos
+                        System.out.println(Gerencia.mostrarBuses());
+                case 4 ->//mostramos todos los pasajeros
+                        System.out.println(Gerencia.mostrarPasajeros());
+                case 5 -> {//asignamos a un pasajero un nuevo bus
                     System.out.println("Ingrese rut pasajero");
                     String destinoPasajero, rut;
                     rut = usuario.readLine();
                     System.out.println("Ingrese el destino");
                     destinoPasajero = usuario.readLine();
-                    Gerencia.asignarBus(rut,destinoPasajero);
-                    break;
-                case 6 ://eliminamos un bus
+                    Gerencia.asignarBus(rut, destinoPasajero);
+                }
+                case 6 -> {//eliminamos un bus
                     System.out.println("Ingrese el numero del bus que desa eliminar");
                     Gerencia.eliminarBus(Integer.parseInt(usuario.readLine()));
-                    break;
-                case 7 ://eliminamos un pasajero
+                }
+                case 7 -> {//eliminamos un pasajero
                     System.out.println("Ingrese el rut del pasajero que desea eliminar");
                     Gerencia.eliminarPasajero(usuario.readLine());
-                    break;
-                case  8://buscamos el numero de bus que tiene un pasajero utilizando su rut
+                }
+                case 8 -> {//buscamos el numero de bus que tiene un pasajero utilizando su rut
                     System.out.println("Ingrese el rut del pasajero: ");
                     Gerencia.obtenerNumeroBusPasajero(usuario.readLine());
-                    break;
-                case 9://buscamos el pasajero más joven
-                    System.out.println(Gerencia.buscarPasajeroMenor().getNombre());
-                    break;
-                case 10://mostramos la lista de pasajeros con asiento impar
+                }
+                case 9 ->//buscamos el pasajero más joven
+                        System.out.println(Gerencia.buscarPasajeroMenor().getNombre());
+                case 10 -> {//mostramos la lista de pasajeros con asiento impar
                     ArrayList<Pasajero> listaAsientosImpar = new ArrayList<>(Gerencia.buscarPasajerosAsientoImpar());
                     for (Pasajero pasajero : listaAsientosImpar) System.out.println("" + pasajero.getNombre());
-                    break;
-                case 11:
+                }
+                case 11 -> {
                     ArrayList<Pasajero> listaAsientosPar = new ArrayList<>(Gerencia.buscarPasajerosAsientoPar());
                     for (Pasajero pasajero : listaAsientosPar) System.out.println("" + pasajero.getNombre());
-                    break;
-                case 12://mostramos la lista de pasajeros con asiento par
+                }
+                case 12 -> {//mostramos la lista de pasajeros con asiento par
                     int numeroBusNuevoConductor;
                     System.out.println("Ingrese el número de bus al que se le agregara un conductor");
                     numeroBusNuevoConductor = Integer.parseInt(usuario.readLine());
                     System.out.println("Ingrese rut del conductor al que le quiere agregar un bus: ");
-                    Gerencia.cambiarConductor(usuario.readLine(),numeroBusNuevoConductor);
-                    break;
-                case 0://terminamos de trabajar y se cierra el codigo
-                    System.out.println("Bye <3");
-                    break;
-                default:
-                    System.out.println("Opcion ingresada no es valida");//pa los que no saben poner un numero
-                    break;
+                    Gerencia.cambiarConductor(usuario.readLine(), numeroBusNuevoConductor);
+                }
+                case 0 ->//terminamos de trabajar y se cierra el codigo
+                        System.out.println("Bye <3");
+                default -> System.out.println("Opcion ingresada no es valida");//pa los que no saben poner un numero
             }
         }while( opcion != 0 );
 
-
-        //aqui abajo hacemos la implementacion del reporte mostrando los datos de los pasajeros y los buses
         try{
-            String ruta = "reporte.txt";
-            File archivo = new File(ruta);
+            File archivo = new File("reporte.txt");
+            File pasajerosAgencia = new File("PasajerosAgencia.txt");
+            File busesAgencia = new File("BusesAgencia.txt");
             if (!archivo.exists()){
                 if (archivo.createNewFile()){
                     FileWriter fw = new FileWriter(archivo);
@@ -152,6 +143,15 @@ public class main {
                 bw.close();
                 System.out.println("El archivo se ha sobreescrito");
             }
+            FileWriter pasjaros = new FileWriter(pasajerosAgencia);
+            BufferedWriter bufferedWriter = new BufferedWriter(pasjaros);
+            bufferedWriter.write(Gerencia.imprimirPasajerosEnArchivo());
+            bufferedWriter.close();
+            FileWriter buses = new FileWriter(busesAgencia);
+            bufferedWriter = new BufferedWriter(buses);
+            bufferedWriter.write(Gerencia.imprimirBusesArchivo());
+            bufferedWriter.close();
+
         }
         catch (Exception e){
             e.printStackTrace();
