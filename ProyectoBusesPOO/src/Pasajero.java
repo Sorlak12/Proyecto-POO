@@ -61,5 +61,4 @@ public abstract class Pasajero extends Persona  {
         PorcentajeDescuento = obtenerPorcentajeDescuento();
     }
     public abstract int obtenerPorcentajeDescuento();
-
 }

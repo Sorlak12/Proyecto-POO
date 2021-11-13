@@ -1,5 +1,6 @@
 import jdk.swing.interop.SwingInterOpUtils;
 
+import javax.swing.*;
 import java.io.*;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -8,12 +9,14 @@ public class main {
     public static void main(String[] args)throws IOException {
 
         //declaramos la variable de opcion para que el usuario pueda escoger en el menu
-        int opcion ;
-
+        int opcion;
         BufferedReader usuario = new BufferedReader(new InputStreamReader (System.in));
-        AgenciaBuses Gerencia = new AgenciaBuses();
+        AgenciaBuses Gerencia =  new AgenciaBuses();
         Gerencia.llenarBuses();
         Gerencia.llenarPasajeros();
+        JFrame menuPrincipal = new VentanaMain("Agencia de Buses", Gerencia);
+        menuPrincipal.setVisible(true);
+
 
 
         do {//mostramos las diferentes opciones a escoger
@@ -25,10 +28,10 @@ public class main {
             System.out.println("Opcion 6 : Eliminar Bus");
             System.out.println("Opcion 7 : Eliminar Pasajero");
             System.out.println("Opcion 8 : Buscar numero de bus Pasajero");
-            System.out.println("opcion 9 : Buscar al pasajero más joven");
-            System.out.println("opcion 10 : Mostrar lista de pasajeros con asientos impares");
-            System.out.println("opcion 11 : Mostras lista de pasajeros con asientos pares");
-            System.out.println("opcion 12 : Cambiar Conductor de bus");
+            System.out.println("Opcion 9 : Buscar al pasajero más joven");
+            System.out.println("Opcion 10 : Mostrar lista de pasajeros con asientos impares");
+            System.out.println("Opcion 11 : Mostras lista de pasajeros con asientos pares");
+            System.out.println("Opcion 12 : Cambiar Conductor de bus");
             System.out.println("Opcion 0 : Finalizar");
             opcion = Integer.parseInt(usuario.readLine());
             switch (opcion) {
@@ -57,7 +60,7 @@ public class main {
                     System.out.println("Dia: ");
                     nuevo.setDiaNacimiento(Integer.parseInt(usuario.readLine()));
                     nuevo.setPorcentajeDescuento();
-                    Gerencia.sumarPasajero(nuevo);
+                    //Gerencia.sumarPasajero(nuevo);
                 }
                 case 2 -> {//inicializamos una variable conductor y una de bus para agregarlos
                     Conductor conductor = new Conductor();
@@ -71,12 +74,14 @@ public class main {
                     conductor.setRut(usuario.readLine());
                     conductor.setNumeroDeBus(numeroBus);
                     Buses busNuevo = new Buses(numeroBus, destinoBus, conductor);
-                    Gerencia.sumarBus(busNuevo, conductor);
+                    //Gerencia.sumarBus(busNuevo, conductor);
                 }
-                case 3 ->//mostramos los buses que tenemos
-                        System.out.println(Gerencia.mostrarBuses());
-                case 4 ->//mostramos todos los pasajeros
-                        System.out.println(Gerencia.mostrarPasajeros());
+                case 3 -> {//mostramos los buses que tenemos
+                    System.out.println(Gerencia.mostrarBuses());
+                }
+                case 4 -> {//mostramos todos los pasajeros
+                    //System.out.println(Gerencia.mostrarPasajeros());
+                }
                 case 5 -> {//asignamos a un pasajero un nuevo bus
                     System.out.println("Ingrese rut pasajero");
                     String destinoPasajero, rut;
@@ -97,8 +102,9 @@ public class main {
                     System.out.println("Ingrese el rut del pasajero: ");
                     Gerencia.obtenerNumeroBusPasajero(usuario.readLine());
                 }
-                case 9 ->//buscamos el pasajero más joven
-                        System.out.println(Gerencia.buscarPasajeroMenor().getNombre());
+                case 9 -> {//buscamos el pasajero más joven
+                    System.out.println(Gerencia.buscarPasajeroMenor().getNombre());
+                }
                 case 10 -> {//mostramos la lista de pasajeros con asiento impar
                     ArrayList<Pasajero> listaAsientosImpar = new ArrayList<>(Gerencia.buscarPasajerosAsientoImpar());
                     for (Pasajero pasajero : listaAsientosImpar) System.out.println("" + pasajero.getNombre());
@@ -118,7 +124,7 @@ public class main {
                         System.out.println("Bye <3");
                 default -> System.out.println("Opcion ingresada no es valida");//pa los que no saben poner un numero
             }
-        }while( opcion != 0 );
+        }while( opcion != 0 );//
 
         try{
             File archivo = new File("reporte.txt");
@@ -157,6 +163,4 @@ public class main {
             e.printStackTrace();
         }
     }
-    
 }
-

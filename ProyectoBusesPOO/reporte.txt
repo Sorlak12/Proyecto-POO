@@ -1,16 +1,16 @@
 	LISTA PASAJEROS
-Nombre: juan gomez
-Rut:3.333.333-3
-Fecha de Nacimiento: 2/2/2001
-Numero de bus: 1 Numero de Asiento: 2
 Nombre: Enrique Muñoz
 Rut:7.837.238-2
 Fecha de Nacimiento: 15/3/1945
 Numero de bus: 2 Numero de Asiento: 1
-Nombre: daniel sotello
-Rut:2.222.222-2
-Fecha de Nacimiento: 2/2/2001
-Numero de bus: 3 Numero de Asiento: 1
+Nombre: Andres Lagos
+Rut:19.636.591-3
+Fecha de Nacimiento: 30/5/2001
+Numero de bus: 2 Numero de Asiento: 2
+Nombre: Erik Cordero
+Rut:7.212.434-8
+Fecha de Nacimiento: 26/11/1950
+Numero de bus: 4 Numero de Asiento: 1
 Nombre: Daniel Gomez
 Rut:19.367.118.7
 Fecha de Nacimiento: 24/12/2001
@@ -18,14 +18,29 @@ Numero de bus: 1 Numero de Asiento: 1
 	LISTA DE BUSES
 Número de Bus: 1 Destino: La Serena
 	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: juan gomez Rut: 3.333.333-3
 Nombre Pasajero: Daniel Gomez Rut: 19.367.118.7
 
 Número de Bus: 2 Destino: Valparaiso
 	LISTA PASAJEROS EN EL BUS
 Nombre Pasajero: Enrique Muñoz Rut: 7.837.238-2
+Nombre Pasajero: Andres Lagos Rut: 19.636.591-3
 
-Número de Bus: 3 Destino: los angeles
+Número de Bus: 3 Destino: Santiago
 	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: daniel sotello Rut: 2.222.222-2
+
+Número de Bus: 4 Destino: Iquique
+	LISTA PASAJEROS EN EL BUS
+Nombre Pasajero: Erik Cordero Rut: 7.212.434-8
+
+Número de Bus: 5 Destino: Concecpcion
+	LISTA PASAJEROS EN EL BUS
+
+Número de Bus: 6 Destino: Copiapó
+	LISTA PASAJEROS EN EL BUS
+
+Número de Bus: 7 Destino: Viña del Mar
+	LISTA PASAJEROS EN EL BUS
+
+Número de Bus: 8 Destino: Valdivia
+	LISTA PASAJEROS EN EL BUS
 
