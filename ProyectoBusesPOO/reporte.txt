@@ -1,46 +1,86 @@
 	LISTA PASAJEROS
 Nombre: Enrique Muñoz
-Rut:7.837.238-2
+Rut: 7.837.238-2
 Fecha de Nacimiento: 15/3/1945
 Numero de bus: 2 Numero de Asiento: 1
 Nombre: Andres Lagos
-Rut:19.636.591-3
+Rut: 19.636.591-3
 Fecha de Nacimiento: 30/5/2001
 Numero de bus: 2 Numero de Asiento: 2
 Nombre: Erik Cordero
-Rut:7.212.434-8
+Rut: 7.212.434-8
 Fecha de Nacimiento: 26/11/1950
 Numero de bus: 4 Numero de Asiento: 1
 Nombre: Daniel Gomez
-Rut:19.367.118.7
+Rut: 19.367.118.7
 Fecha de Nacimiento: 24/12/2001
 Numero de bus: 1 Numero de Asiento: 1
 	LISTA DE BUSES
-Número de Bus: 1 Destino: La Serena
-	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: Daniel Gomez Rut: 19.367.118.7
+----------------------------------------------------------------------------
 
-Número de Bus: 2 Destino: Valparaiso
+Número de Bus: 1
+Destino: La Serena
+Conductor: Juan Hernandez
+Rut: 8.526.212-8
 	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: Enrique Muñoz Rut: 7.837.238-2
-Nombre Pasajero: Andres Lagos Rut: 19.636.591-3
+Nombre Pasajero: Daniel Gomez	Rut: 19.367.118.7
 
-Número de Bus: 3 Destino: Santiago
+----------------------------------------------------------------------------
+
+Número de Bus: 2
+Destino: Valparaiso
+Conductor: Esteban Guitierrez
+Rut: 12.736.344-2
+	LISTA PASAJEROS EN EL BUS
+Nombre Pasajero: Enrique Muñoz	Rut: 7.837.238-2
+Nombre Pasajero: Andres Lagos	Rut: 19.636.591-3
+
+----------------------------------------------------------------------------
+
+Número de Bus: 3
+Destino: Santiago
+Conductor: Felipe Mardones
+Rut: 10.473.324-6
 	LISTA PASAJEROS EN EL BUS
 
-Número de Bus: 4 Destino: Iquique
-	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: Erik Cordero Rut: 7.212.434-8
+----------------------------------------------------------------------------
 
-Número de Bus: 5 Destino: Concecpcion
+Número de Bus: 4
+Destino: Iquique
+Conductor: Pablo Martinez
+Rut: 9.16.885-7
+	LISTA PASAJEROS EN EL BUS
+Nombre Pasajero: Erik Cordero	Rut: 7.212.434-8
+
+----------------------------------------------------------------------------
+
+Número de Bus: 5
+Destino: Concecpcion
+Conductor: Javier Cifuentes
+Rut: 12.120.527.0
 	LISTA PASAJEROS EN EL BUS
 
-Número de Bus: 6 Destino: Copiapó
+----------------------------------------------------------------------------
+
+Número de Bus: 6
+Destino: Copiapó
+Conductor: Martin Orellana
+Rut: 15.456.118-4
 	LISTA PASAJEROS EN EL BUS
 
-Número de Bus: 7 Destino: Viña del Mar
+----------------------------------------------------------------------------
+
+Número de Bus: 7
+Destino: Viña del Mar
+Conductor: Javiera Gonzalez
+Rut: 17.873.184-2
 	LISTA PASAJEROS EN EL BUS
 
-Número de Bus: 8 Destino: Valdivia
+----------------------------------------------------------------------------
+
+Número de Bus: 8
+Destino: Valdivia
+Conductor: Gabriel Vergara
+Rut: 11.235.945-k
 	LISTA PASAJEROS EN EL BUS
 

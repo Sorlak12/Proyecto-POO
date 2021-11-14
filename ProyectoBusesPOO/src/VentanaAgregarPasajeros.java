@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 
 public class VentanaAgregarPasajeros extends javax.swing.JFrame{
     private JPanel AgregarPasajerosMenu;
@@ -37,6 +40,44 @@ public class VentanaAgregarPasajeros extends javax.swing.JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 crearPasajero(Gerencia);
+                try{
+                    File archivo = new File("reporte.txt");
+                    File pasajerosAgencia = new File("PasajerosAgencia.txt");
+                    File busesAgencia = new File("BusesAgencia.txt");
+                    if (!archivo.exists()){
+                        if (archivo.createNewFile()){
+                            FileWriter fw = new FileWriter(archivo);
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            bw.write(Gerencia.mostrarPasajeros());
+                            bw.write(Gerencia.mostrarBuses());
+                            bw.close();
+                            System.out.println("El archivo ha sido creado correctamente");
+                        }
+                        else System.out.println("El arhivo no se pudo crear");
+                    }
+                    else {
+                        FileWriter fw = new FileWriter(archivo);
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(Gerencia.mostrarPasajeros());
+                        bw.write(Gerencia.mostrarBuses());
+                        bw.close();
+                        System.out.println("El archivo se ha sobreescrito");
+                    }
+                    FileWriter pasjaros = new FileWriter(pasajerosAgencia);
+                    BufferedWriter bufferedWriter = new BufferedWriter(pasjaros);
+                    bufferedWriter.write(Gerencia.imprimirPasajerosEnArchivo());
+                    bufferedWriter.close();
+                    FileWriter buses = new FileWriter(busesAgencia);
+                    bufferedWriter = new BufferedWriter(buses);
+                    bufferedWriter.write(Gerencia.imprimirBusesArchivo());
+                    bufferedWriter.close();
+
+                }
+                catch (Exception error){
+                    error.printStackTrace();
+                }
+                System.exit(0);
+
             }
         });
         atrasButton.addActionListener(new ActionListener() {

@@ -126,41 +126,6 @@ public class main {
             }
         }while( opcion != 0 );//
 
-        try{
-            File archivo = new File("reporte.txt");
-            File pasajerosAgencia = new File("PasajerosAgencia.txt");
-            File busesAgencia = new File("BusesAgencia.txt");
-            if (!archivo.exists()){
-                if (archivo.createNewFile()){
-                    FileWriter fw = new FileWriter(archivo);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    bw.write(Gerencia.mostrarPasajeros());
-                    bw.write(Gerencia.mostrarBuses());
-                    bw.close();
-                    System.out.println("El archivo ha sido creado correctamente");
-                }
-                else System.out.println("El arhivo no se pudo crear");
-            }
-            else {
-                FileWriter fw = new FileWriter(archivo);
-                BufferedWriter bw = new BufferedWriter(fw);
-                bw.write(Gerencia.mostrarPasajeros());
-                bw.write(Gerencia.mostrarBuses());
-                bw.close();
-                System.out.println("El archivo se ha sobreescrito");
-            }
-            FileWriter pasjaros = new FileWriter(pasajerosAgencia);
-            BufferedWriter bufferedWriter = new BufferedWriter(pasjaros);
-            bufferedWriter.write(Gerencia.imprimirPasajerosEnArchivo());
-            bufferedWriter.close();
-            FileWriter buses = new FileWriter(busesAgencia);
-            bufferedWriter = new BufferedWriter(buses);
-            bufferedWriter.write(Gerencia.imprimirBusesArchivo());
-            bufferedWriter.close();
 
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }

@@ -48,7 +48,7 @@ public class Buses implements DatosAgencia{
     public String mostrarPasajerosBus(){
         String texto = 	"\tLISTA PASAJEROS EN EL BUS\n";
         for(String rut : mapaListaPasajeros.keySet()){
-            texto += "Nombre Pasajero: " + mapaListaPasajeros.get(rut).getNombre() + " Rut: " + mapaListaPasajeros.get(rut).getRut()+"\n";
+            texto += "Nombre Pasajero: " + mapaListaPasajeros.get(rut).getNombre() + "\t" + "Rut: " + mapaListaPasajeros.get(rut).getRut()+"\n";
         }
         return texto;
     }
@@ -104,6 +104,7 @@ public class Buses implements DatosAgencia{
 
     @Override
     public String mostrarDatos() { // mumuetras los datos del bus
-        return "Número de Bus: " + NumeroBus + " Destino: " + Destino + "\n" + mostrarPasajerosBus()+ "\n";
+        return "Número de Bus: " + NumeroBus + "\n"+ "Destino: " + Destino + "\n"+ "Conductor: " + conductor.getNombre() + "\n"
+                + "Rut: "+conductor.getRut() + "\n" + mostrarPasajerosBus()+ "\n";
     }
 }

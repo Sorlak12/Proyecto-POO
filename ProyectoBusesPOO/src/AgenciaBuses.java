@@ -24,7 +24,9 @@ public class AgenciaBuses {
     public String mostrarBuses() {
         String texto = "\tLISTA DE BUSES\n";
         for (Buses bus : listaBuses) {
+            texto += "----------------------------------------------------------------------------\n\n";
             texto += bus.mostrarDatos();
+
         }
 
         return texto;

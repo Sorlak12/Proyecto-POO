@@ -1,19 +1,26 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.io.FileNotFoundException;
 
 public class VentanaMostrarBuses extends javax.swing.JFrame {
     private JButton atrasButton;
     private JTextArea ListasBusesTexto;
     private JPanel MostrarBusesPanel;
+    private JScrollBar scrollBar1;
 
     public VentanaMostrarBuses(String title, AgenciaBuses Gerenecia){
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MostrarBusesPanel);
         this.setSize(600, 800);
-        ListasBusesTexto.setText(Gerenecia.mostrarBuses());atrasButton.addActionListener(new ActionListener() {
+        scrollBar1.setMaximum(800);
+        scrollBar1.setMinimum(1);
+
+        ListasBusesTexto.setText(Gerenecia.mostrarBuses());
+        atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame menuPrincipal = null;
@@ -25,6 +32,12 @@ public class VentanaMostrarBuses extends javax.swing.JFrame {
                 assert menuPrincipal != null;
                 menuPrincipal.setVisible(true);
                 dispose();
+            }
+        });
+        scrollBar1.addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                
             }
         });
     }
