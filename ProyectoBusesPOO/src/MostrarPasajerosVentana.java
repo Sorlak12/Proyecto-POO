@@ -2,24 +2,18 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
-public class MostarPasajerosImparesFrame extends javax.swing.JFrame{
-    private JPanel VentanaLIstaImpares;
-    private JTextArea PasajerosImparesText;
+public class MostrarPasajerosVentana extends javax.swing.JFrame {
     private JButton atrasButton;
-    public MostarPasajerosImparesFrame(String title, AgenciaBuses Gerencia){
+    private JTextPane ListaPasajerosText;
+    private JPanel MostrarPasajerosFrame;
+
+    public MostrarPasajerosVentana(String title, AgenciaBuses Gerencia){
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(VentanaLIstaImpares);
+        this.setContentPane(MostrarPasajerosFrame);
         this.setSize(600, 500);
-        ArrayList<Pasajero> pasajerosImpares = new ArrayList<>(Gerencia.buscarPasajerosAsientoImpar());
-        String Pasajeros = "\tLista Pasajeros Impares\n";
-        for (Pasajero pasajero : pasajerosImpares) {
-            Pasajeros += (pasajero.getNombre() + " "  + pasajero.getRut()) + " Numero de Bus: " + pasajero.getNumeroBus()
-                    + " Numero de Asiento: " + pasajero.getNumeroDeAsiento() +"\n";
-        };
-        PasajerosImparesText.setText(Pasajeros);
+        ListaPasajerosText.setText(Gerencia.mostrarPasajeros());
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

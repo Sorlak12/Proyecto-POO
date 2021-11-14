@@ -24,13 +24,14 @@ public class VentanaAgregarPasajeros extends javax.swing.JFrame{
     private JButton ConfirmarButton;
     private JLabel EstadoLabel;
     private JButton atrasButton;
+    private JLabel ErrorLabel;
     Pasajero nuevo = new PasajeroComun();
 
     public VentanaAgregarPasajeros(String title, AgenciaBuses Gerencia){
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(AgregarPasajerosMenu);
-        this.pack();
+        this.setSize(600, 500);
 
         ConfirmarButton.addActionListener(new ActionListener() {
             @Override
@@ -55,24 +56,25 @@ public class VentanaAgregarPasajeros extends javax.swing.JFrame{
     }
     public void crearPasajero(AgenciaBuses Gerencia){
         Pasajero nuevo = new PasajeroComun();
-        String opcionPasajero = opcionTextField.getText() ;
-        if (opcionPasajero.compareTo("estudiante") == 0) {
-            nuevo = new Estudiante();
-        } else if (opcionPasajero.compareTo("Adulto Mayor") == 0) {
-            nuevo = new AdultoMayor();
-        };
-        nuevo.setNombre(NombreText.getText());
-        nuevo.setRut(RutPasajeroText.getText());
-        nuevo.setNumeroBus(Integer.parseInt(NumeroBusText.getText()));
-        nuevo.setNumeroDeAsiento(Integer.parseInt(NumeroAsientoText.getText()));
-        nuevo.setAnyoNacimiento(Integer.parseInt(AnyoNacimientoText.getText()));
-        nuevo.setMesNacimiento(Integer.parseInt(MesNacimientoText.getText()));
-        nuevo.setDiaNacimiento(Integer.parseInt(DiaNacimientoText.getText()));
-        nuevo.setPorcentajeDescuento();
-        EstadoLabel.setText("Operacion Exitosa");
-        Gerencia.sumarPasajero(nuevo);
-    }
-    public Pasajero getPasajero(){
-        return nuevo;
+        String opcionPasajero = opcionTextField.getText().toLowerCase() ;
+
+            if (opcionPasajero.compareTo("estudiante") == 0) {
+                nuevo = new Estudiante();
+            } else if (opcionPasajero.compareTo("adulto Mayor") == 0) {
+                nuevo = new AdultoMayor();
+            }
+            ;
+            if (NombreText.getText() == "")
+                ErrorLabel.setText("Debe ingresar un nombre");
+            nuevo.setNombre(NombreText.getText());
+            nuevo.setRut(RutPasajeroText.getText());
+            nuevo.setNumeroBus(Integer.parseInt(NumeroBusText.getText()));
+            nuevo.setNumeroDeAsiento(Integer.parseInt(NumeroAsientoText.getText()));
+            nuevo.setAnyoNacimiento(Integer.parseInt(AnyoNacimientoText.getText()));
+            nuevo.setMesNacimiento(Integer.parseInt(MesNacimientoText.getText()));
+            nuevo.setDiaNacimiento(Integer.parseInt(DiaNacimientoText.getText()));
+            nuevo.setPorcentajeDescuento();
+            EstadoLabel.setText("Operacion Exitosa");
+            Gerencia.sumarPasajero(nuevo);
     }
 }

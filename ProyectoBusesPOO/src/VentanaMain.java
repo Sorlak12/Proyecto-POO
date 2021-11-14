@@ -27,7 +27,7 @@ public class VentanaMain extends javax.swing.JFrame {
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(BusesGUI);
-        this.pack();
+        this.setSize(600, 500);
 
 
         agregarPasajeroButton.addActionListener(new ActionListener() {
@@ -50,6 +50,22 @@ public class VentanaMain extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFrame mostarPImparesVentana = new MostarPasajerosImparesFrame ("Mostrar Pasajeros Impares", Gerencia);
                 mostarPImparesVentana.setVisible(true);
+                dispose();
+            }
+        });
+        mostrarPasajerosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame mostarPasajerosVentana = new MostrarPasajerosVentana("Mostrar Pasajeros", Gerencia);
+                mostarPasajerosVentana.setVisible(true);
+                dispose();
+            }
+        });
+        mostrarBusesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame ventanaMostrarBuses = new VentanaMostrarBuses("Mostrar Buses", Gerencia);
+                ventanaMostrarBuses.setVisible(true);
                 dispose();
             }
         });

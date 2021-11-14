@@ -53,7 +53,7 @@ public abstract class Pasajero extends Persona  {
         this.NumeroDeAsiento = NumeroDeAsiento;
     }
     public String mostrarDatos(){
-        return "Nombre: " + getNombre() +"\n" + "Rut:" + getRut() + "\n" +  "Fecha de Nacimiento: "+
+        return "Nombre: " + getNombre() +"\n" + "Rut: " + getRut() + "\n" +  "Fecha de Nacimiento: "+
                 getDiaNacimiento() + "/" + getMesNacimiento() + "/" + getAnyoNacimiento() +
                 "\n" + "Numero de bus: " + getNumeroBus() + " Numero de Asiento: " + getNumeroDeAsiento() + "\n";
     }
