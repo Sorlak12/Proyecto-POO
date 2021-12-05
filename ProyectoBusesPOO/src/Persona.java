@@ -2,9 +2,9 @@ public class Persona implements DatosAgencia {
     //Atributos de la clase persona//
     private String nombre;
     private String rut;
-    int diaNacimiento;
-    int mesNacimiento;
-    int anyoNacimiento;
+    private int diaNacimiento;
+    private int mesNacimiento;
+    private int anyoNacimiento;
 
     //Constructores//
     public Persona(){};

@@ -24,12 +24,12 @@
           <text value="Mostrar Pasajeros"/>
         </properties>
       </component>
-      <component id="4c0" class="javax.swing.JButton" binding="asignarBusAPasajeroButton" default-binding="true">
+      <component id="4c0" class="javax.swing.JButton" binding="cambiarBusAPasajeroButton" default-binding="true">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Asignar Bus a pasajero"/>
+          <text value="Cambiar / Asignar Bus a pasajero"/>
         </properties>
       </component>
       <component id="a6b48" class="javax.swing.JButton" binding="eliminarBusButton" default-binding="true">

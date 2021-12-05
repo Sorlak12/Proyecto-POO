@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="5e6c0" class="javax.swing.JLabel" binding="nombrePasajeroLabel">
+      <component id="5e6c0" class="javax.swing.JLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -24,7 +24,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="1c5f2" class="javax.swing.JLabel" binding="OpcionPasajeroLabel">
+      <component id="1c5f2" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -42,7 +42,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="53daa" class="javax.swing.JLabel" binding="RutPasajeroLabel">
+      <component id="53daa" class="javax.swing.JLabel">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -58,7 +58,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="d25f0" class="javax.swing.JLabel" binding="NumeroBusLabel">
+      <component id="d25f0" class="javax.swing.JLabel">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -74,7 +74,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="ce04" class="javax.swing.JLabel" binding="NumeroAsientoLabel">
+      <component id="ce04" class="javax.swing.JLabel">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -90,7 +90,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="44b45" class="javax.swing.JLabel" binding="AnyoNacimientoLabel">
+      <component id="44b45" class="javax.swing.JLabel">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -106,7 +106,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="29d57" class="javax.swing.JLabel" binding="MesNacimientoLabel">
+      <component id="29d57" class="javax.swing.JLabel">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -122,7 +122,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="4202c" class="javax.swing.JLabel" binding="DiaNacimientoLabel">
+      <component id="4202c" class="javax.swing.JLabel">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

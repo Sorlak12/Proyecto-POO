@@ -14,7 +14,7 @@ Numero de bus: 4 Numero de Asiento: 1
 Nombre: Daniel Gomez
 Rut: 19.367.118.7
 Fecha de Nacimiento: 24/12/2001
-Numero de bus: 1 Numero de Asiento: 1
+Numero de bus: 2 Numero de Asiento: 3
 	LISTA DE BUSES
 ----------------------------------------------------------------------------
 
@@ -23,7 +23,6 @@ Destino: La Serena
 Conductor: Juan Hernandez
 Rut: 8.526.212-8
 	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: Daniel Gomez	Rut: 19.367.118.7
 
 ----------------------------------------------------------------------------
 
@@ -32,8 +31,9 @@ Destino: Valparaiso
 Conductor: Esteban Guitierrez
 Rut: 12.736.344-2
 	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: Enrique Muñoz	Rut: 7.837.238-2
-Nombre Pasajero: Andres Lagos	Rut: 19.636.591-3
+Nombre Pasajero: Enrique Muñoz	Rut: 7.837.238-2 Numero de Asiento: 1
+Nombre Pasajero: Andres Lagos	Rut: 19.636.591-3 Numero de Asiento: 2
+Nombre Pasajero: Daniel Gomez	Rut: 19.367.118.7 Numero de Asiento: 3
 
 ----------------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ Destino: Iquique
 Conductor: Pablo Martinez
 Rut: 9.16.885-7
 	LISTA PASAJEROS EN EL BUS
-Nombre Pasajero: Erik Cordero	Rut: 7.212.434-8
+Nombre Pasajero: Erik Cordero	Rut: 7.212.434-8 Numero de Asiento: 1
 
 ----------------------------------------------------------------------------
 
@@ -82,5 +82,13 @@ Número de Bus: 8
 Destino: Valdivia
 Conductor: Gabriel Vergara
 Rut: 11.235.945-k
+	LISTA PASAJEROS EN EL BUS
+
+----------------------------------------------------------------------------
+
+Número de Bus: 9
+Destino: Calama
+Conductor: Pedro Vasquez
+Rut: 13.116.885-7
 	LISTA PASAJEROS EN EL BUS
 

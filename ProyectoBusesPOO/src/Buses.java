@@ -48,7 +48,8 @@ public class Buses implements DatosAgencia{
     public String mostrarPasajerosBus(){
         String texto = 	"\tLISTA PASAJEROS EN EL BUS\n";
         for(String rut : mapaListaPasajeros.keySet()){
-            texto += "Nombre Pasajero: " + mapaListaPasajeros.get(rut).getNombre() + "\t" + "Rut: " + mapaListaPasajeros.get(rut).getRut()+"\n";
+            texto += "Nombre Pasajero: " + mapaListaPasajeros.get(rut).getNombre() + "\t" + "Rut: " + mapaListaPasajeros.get(rut).getRut()
+                    + " Numero de Asiento: "+ + mapaListaPasajeros.get(rut).getNumeroDeAsiento() + "\n";
         }
         return texto;
     }
@@ -72,7 +73,9 @@ public class Buses implements DatosAgencia{
         }
     }//elimina todos los pasajeros de un bus
     public void quitarPasajero(String rut){
+        listaAsientos[(mapaListaPasajeros.get(rut).getNumeroDeAsiento())-1] = (mapaListaPasajeros.get(rut).getNumeroDeAsiento());
         mapaListaPasajeros.remove(rut);
+        Pasajes--;
     } //elimina un pasajero en especifico de un bus
     public boolean revisarRentabilidad() {
         return Pasajes >= 20;
@@ -80,12 +83,13 @@ public class Buses implements DatosAgencia{
 
     public void definirAsientoAleatorio(Pasajero nuevo) //asigna un asiento aleatorio a pasajero que no especifica su numero de asiento
     {
-        int i = 0;
-        while (listaAsientos[i] == 0){
-            i++;
+        for (int i = 0 ; i < 10 ; i++){
+            if (listaAsientos[i] != 0){
+                nuevo.setNumeroDeAsiento(i+1);
+                listaAsientos[i] = 0;
+                return;
+            }
         }
-        nuevo.setNumeroDeAsiento(listaAsientos[i]);
-        listaAsientos[i] = 0;
     }
     public void definirAsientoElegido(Pasajero nuevo,int numAsiento){
         try{

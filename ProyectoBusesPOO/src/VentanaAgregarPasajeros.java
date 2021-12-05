@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,27 +6,18 @@ import java.io.FileWriter;
 
 public class VentanaAgregarPasajeros extends javax.swing.JFrame{
     private JPanel AgregarPasajerosMenu;
-    private JLabel nombrePasajeroLabel;
     private JTextField NombreText;
-    private JLabel OpcionPasajeroLabel;
     private JTextField opcionTextField;
-    private JLabel RutPasajeroLabel;
     private JTextField RutPasajeroText;
-    private JLabel NumeroBusLabel;
     private JTextField NumeroBusText;
-    private JLabel NumeroAsientoLabel;
     private JTextField NumeroAsientoText;
-    private JLabel AnyoNacimientoLabel;
     private JTextField AnyoNacimientoText;
-    private JLabel MesNacimientoLabel;
     private JTextField MesNacimientoText;
-    private JLabel DiaNacimientoLabel;
     private JTextField DiaNacimientoText;
     private JButton ConfirmarButton;
     private JLabel EstadoLabel;
     private JButton atrasButton;
     private JLabel ErrorLabel;
-    Pasajero nuevo = new PasajeroComun();
 
     public VentanaAgregarPasajeros(String title, AgenciaBuses Gerencia){
         super(title);
@@ -36,63 +25,55 @@ public class VentanaAgregarPasajeros extends javax.swing.JFrame{
         this.setContentPane(AgregarPasajerosMenu);
         this.setSize(600, 500);
 
-        ConfirmarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                crearPasajero(Gerencia);
-                try{
-                    File archivo = new File("reporte.txt");
-                    File pasajerosAgencia = new File("PasajerosAgencia.txt");
-                    File busesAgencia = new File("BusesAgencia.txt");
-                    if (!archivo.exists()){
-                        if (archivo.createNewFile()){
-                            FileWriter fw = new FileWriter(archivo);
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            bw.write(Gerencia.mostrarPasajeros());
-                            bw.write(Gerencia.mostrarBuses());
-                            bw.close();
-                            System.out.println("El archivo ha sido creado correctamente");
-                        }
-                        else System.out.println("El arhivo no se pudo crear");
-                    }
-                    else {
+        ConfirmarButton.addActionListener(e -> {
+            crearPasajero(Gerencia);
+            try{
+                File archivo = new File("reporte.txt");
+                File pasajerosAgencia = new File("PasajerosAgencia.txt");
+                File busesAgencia = new File("BusesAgencia.txt");
+                if (!archivo.exists()){
+                    if (archivo.createNewFile()){
                         FileWriter fw = new FileWriter(archivo);
                         BufferedWriter bw = new BufferedWriter(fw);
                         bw.write(Gerencia.mostrarPasajeros());
                         bw.write(Gerencia.mostrarBuses());
                         bw.close();
-                        System.out.println("El archivo se ha sobreescrito");
+                        System.out.println("El archivo ha sido creado correctamente");
                     }
-                    FileWriter pasjaros = new FileWriter(pasajerosAgencia);
-                    BufferedWriter bufferedWriter = new BufferedWriter(pasjaros);
-                    bufferedWriter.write(Gerencia.imprimirPasajerosEnArchivo());
-                    bufferedWriter.close();
-                    FileWriter buses = new FileWriter(busesAgencia);
-                    bufferedWriter = new BufferedWriter(buses);
-                    bufferedWriter.write(Gerencia.imprimirBusesArchivo());
-                    bufferedWriter.close();
-
+                    else System.out.println("El arhivo no se pudo crear");
                 }
-                catch (Exception error){
-                    error.printStackTrace();
+                else {
+                    FileWriter fw = new FileWriter(archivo);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw.write(Gerencia.mostrarPasajeros());
+                    bw.write(Gerencia.mostrarBuses());
+                    bw.close();
+                    System.out.println("El archivo se ha sobreescrito");
                 }
-                System.exit(0);
+                FileWriter pasjaros = new FileWriter(pasajerosAgencia);
+                BufferedWriter bufferedWriter = new BufferedWriter(pasjaros);
+                bufferedWriter.write(Gerencia.imprimirPasajerosEnArchivo());
+                bufferedWriter.close();
+                FileWriter buses = new FileWriter(busesAgencia);
+                bufferedWriter = new BufferedWriter(buses);
+                bufferedWriter.write(Gerencia.imprimirBusesArchivo());
+                bufferedWriter.close();
 
+            }
+            catch (Exception error){
+                error.printStackTrace();
             }
         });
-        atrasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame menuPrincipal = null;
-                try {
-                    menuPrincipal = new VentanaMain("Agencia de Buses",Gerencia);
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                }
-                assert menuPrincipal != null;
-                menuPrincipal.setVisible(true);
-                dispose();
+        atrasButton.addActionListener(e -> {
+            JFrame menuPrincipal = null;
+            try {
+                menuPrincipal = new VentanaMain("Agencia de Buses",Gerencia);
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
             }
+            assert menuPrincipal != null;
+            menuPrincipal.setVisible(true);
+            dispose();
         });
     }
     public void crearPasajero(AgenciaBuses Gerencia){
@@ -104,8 +85,7 @@ public class VentanaAgregarPasajeros extends javax.swing.JFrame{
             } else if (opcionPasajero.compareTo("adulto Mayor") == 0) {
                 nuevo = new AdultoMayor();
             }
-            ;
-            if (NombreText.getText() == "")
+        if (NombreText.getText().equals(""))
                 ErrorLabel.setText("Debe ingresar un nombre");
             nuevo.setNombre(NombreText.getText());
             nuevo.setRut(RutPasajeroText.getText());

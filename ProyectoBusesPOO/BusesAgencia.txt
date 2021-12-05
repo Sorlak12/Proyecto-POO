@@ -6,3 +6,4 @@
 6,Copiapó,Martin Orellana,15.456.118-4
 7,Viña del Mar,Javiera Gonzalez,17.873.184-2
 8,Valdivia,Gabriel Vergara,11.235.945-k
+9,Calama,Pedro Vasquez,13.116.885-7

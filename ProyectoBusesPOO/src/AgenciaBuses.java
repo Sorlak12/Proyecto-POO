@@ -57,7 +57,7 @@ public class AgenciaBuses {
 
     public void asignarBus(Pasajero nuevo) {
         if (mapaListaBuses.get(nuevo.getNumeroBus()) != null) {
-            mapaListaBuses.get(nuevo.getNumeroBus()).sumarPasajero(nuevo, nuevo.getNumeroDeAsiento());//creo que seria solo 1
+            mapaListaBuses.get(nuevo.getNumeroBus()).sumarPasajero(nuevo);
         } else {
             System.out.println("El bus no existe");
         }
@@ -65,8 +65,10 @@ public class AgenciaBuses {
 
     public void asignarBus(String rut, String destino) {
         for (Buses bus : listaBuses) {
-            if (bus.getDestino().compareTo(destino) == 0) {
+            if (bus.getDestino().compareTo(destino) == 0 && (bus.getPasajes() < 10)) {
                 mapaListaBuses.get(bus.getNumeroBus()).sumarPasajero(mapaListaPasajeros.get(rut));
+                bus.sumarPasajero(mapaListaPasajeros.get(rut));
+                mapaListaPasajeros.get(rut).setNumeroBus(bus.getNumeroBus());
                 return;
             }
         }
@@ -235,4 +237,12 @@ public class AgenciaBuses {
         }
         return texto;
     }
+    public HashMap<String, Pasajero> getMapaListaPasajeros(){
+        return mapaListaPasajeros;
+    }
+    public HashMap<Integer, Buses> getMapaListaBuses(){return mapaListaBuses;}
+    public ArrayList<Buses> getListaBuses(){
+        return listaBuses;
+    }
+
 }

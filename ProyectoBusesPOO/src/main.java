@@ -24,7 +24,7 @@ public class main {
             System.out.println("Opcion 2 : Agregar Bus");
             System.out.println("Opcion 3 : Mostrar Buses");
             System.out.println("Opcion 4 : Mostrar Pasajeros");
-            System.out.println("Opcion 5 : Asignar bus a pasajero");
+            System.out.println("Opcion 5 : Asignar o cambiar bus a pasajero bus a pasajero");
             System.out.println("Opcion 6 : Eliminar Bus");
             System.out.println("Opcion 7 : Eliminar Pasajero");
             System.out.println("Opcion 8 : Buscar numero de bus Pasajero");
@@ -74,7 +74,7 @@ public class main {
                     conductor.setRut(usuario.readLine());
                     conductor.setNumeroDeBus(numeroBus);
                     Buses busNuevo = new Buses(numeroBus, destinoBus, conductor);
-                    //Gerencia.sumarBus(busNuevo, conductor);
+                    Gerencia.sumarBus(busNuevo, conductor);
                 }
                 case 3 -> {//mostramos los buses que tenemos
                     System.out.println(Gerencia.mostrarBuses());
