@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -116,6 +118,27 @@ public class VentanaMain extends javax.swing.JFrame {
             JFrame ventanaPasajeroMenor = new VentanaPasajeroMenor("Pasajero Mas Joven", Gerencia);
             ventanaPasajeroMenor.setVisible(true);
             dispose();
+        });
+        eliminarBusButton.addActionListener(e -> {
+            JFrame ventanaEliminarBus = new VentanaEliminarBus("Eliminar Bus", Gerencia);
+            ventanaEliminarBus.setVisible(true);
+            dispose();
+        });
+        eliminarPasajeroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame ventanaEliminarPasajero = new VentanaEliminarPasajero("Eliminar Pasajero", Gerencia);
+                ventanaEliminarPasajero.setVisible(true);
+                dispose();
+            }
+        });
+        cambiarConductorBusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame ventanaCambiarConductor = new VentanaCambiarConductor("Cambiar Conductor", Gerencia);
+                ventanaCambiarConductor.setVisible(true);
+                dispose();
+            }
         });
     }
 

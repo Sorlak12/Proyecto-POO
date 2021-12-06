@@ -111,4 +111,7 @@ public class Buses implements DatosAgencia{
         return "Número de Bus: " + NumeroBus + "\n"+ "Destino: " + Destino + "\n"+ "Conductor: " + conductor.getNombre() + "\n"
                 + "Rut: "+conductor.getRut() + "\n" + mostrarPasajerosBus()+ "\n";
     }
+    public HashMap<String,Pasajero> getMapaListaPasajeros(){
+        return mapaListaPasajeros;
+    }
 }

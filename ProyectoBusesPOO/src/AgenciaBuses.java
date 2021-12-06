@@ -24,8 +24,10 @@ public class AgenciaBuses {
     public String mostrarBuses() {
         String texto = "\tLISTA DE BUSES\n";
         for (Buses bus : listaBuses) {
-            texto += "----------------------------------------------------------------------------\n\n";
-            texto += bus.mostrarDatos();
+            if (bus != null) {
+                texto += "----------------------------------------------------------------------------\n\n";
+                texto += bus.mostrarDatos();
+            }
 
         }
 
@@ -74,29 +76,61 @@ public class AgenciaBuses {
         }
     }//se le asigna un bus con un mismo destino al pasajero del bus no rentable eliminado
 
-    public void eliminarBus(int numeroBus) {
+    public String eliminarBus(int numeroBus) {
+        String destinoBus = mapaListaBuses.get(numeroBus).getDestino();
+        if (!mapaListaBuses.containsKey(numeroBus)){
+            return ("No se encontro el bus seleccionado");
+        }
+        HashMap<String,Pasajero> pasjeros = mapaListaBuses.get(numeroBus).getMapaListaPasajeros();
         mapaListaBuses.get(numeroBus).getConductor().setNumeroDeBus(0);
         mapaListaBuses.remove(numeroBus);
+        int numBusNuevo = 0;
         for (int i = 0; i < listaBuses.size(); i++) {
             if (listaBuses.get(i).getNumeroBus() == numeroBus) {
-                listaBuses.remove(i);
+                listaBuses.set(i, null);
                 System.out.println("El bus ha sido eliminado correctamente");
-                return;
+                break;
             }
         }
-        System.out.println("No se encontro el bus seleccionado");
+        if (pasjeros.size() != 0) {
+            for (Buses listaBus : listaBuses) {
+                if ((listaBus.getPasajes() < 10) && ((10 - listaBus.getPasajes()) >= pasjeros.size())
+                        && listaBus.getDestino().equals(destinoBus)) {
+                    listaBus.getMapaListaPasajeros().putAll(pasjeros);
+                    mapaListaBuses.get(listaBus.getNumeroBus()).getMapaListaPasajeros().putAll(pasjeros);
+                    numBusNuevo = listaBus.getNumeroBus();
+                    break;
+                }
+            }
+            if (numBusNuevo != 0) {
+                for (String numBus : mapaListaBuses.get(numeroBus).getMapaListaPasajeros().keySet()) {
+                    if (mapaListaBuses.get(numeroBus).getMapaListaPasajeros().get(numBus).getNumeroBus() != numBusNuevo) {
+                        mapaListaBuses.get(numeroBus).getMapaListaPasajeros().get(numBus).setNumeroBus(numBusNuevo);
+                    }
+                }
+                return "Operacion Exitosa, pasajeros reasignadoas al bus Nro: " + numBusNuevo;
+            } else {
+                for (String rutPasajero : pasjeros.keySet()) {
+                    mapaListaPasajeros.get(rutPasajero).setNumeroBus(0);
+                }
+                return ("No hay un bus con capacidad suficiente para reasignar Pasajeros");
+            }
+        }
+        else {
+            return "No había pasajeros en el bus";
+        }
     }
 
-    public void eliminarPasajero(String rutPasajero) {
+    public String eliminarPasajero(String rutPasajero) {
         if (mapaListaPasajeros.get(rutPasajero) != null) {
             if (mapaListaPasajeros.get(rutPasajero).getNumeroBus() != 0 && mapaListaBuses.get(mapaListaPasajeros.get(rutPasajero).getNumeroBus()) != null) {
+                listaBuses.get(mapaListaPasajeros.get(rutPasajero).getNumeroBus()).getMapaListaPasajeros().remove(rutPasajero);
                 mapaListaBuses.get(mapaListaPasajeros.get(rutPasajero).getNumeroBus()).quitarPasajero(rutPasajero);
             }
             mapaListaPasajeros.remove(rutPasajero);
-            System.out.println("El pasajero se elimino correctamente");
-            return;
+            return ("El pasajero se elimino correctamente");
         }
-        System.out.println("El pasajero selccionado no se encontro");
+        return ("El pasajero selccionado no se encontro");
     }
 
     public void obtenerNumeroBusPasajero(String rut) {
@@ -149,11 +183,28 @@ public class AgenciaBuses {
         return PasajerosAsientoPar;
     }
 
-    public void cambiarConductor(String rutConductorNuevo, int numeroBus) {
-        if (mapaListaBuses.get(numeroBus).getConductor() != null)
-            mapaListaBuses.get(numeroBus).getConductor().setNumeroDeBus(0);
-        mapaListaBuses.get(numeroBus).setConductor(listaConductores.get(rutConductorNuevo));
-        listaConductores.get(rutConductorNuevo).setNumeroDeBus(numeroBus);
+    public String cambiarConductor(String rutConductorNuevo, int numeroBus) {
+        if (!mapaListaBuses.containsKey(numeroBus) || !listaConductores.containsKey(rutConductorNuevo))
+        {
+            return "No se han encontrado lo elementos, verifique informcaion e intente nuevamente";
+        }
+        else
+        {
+            if (mapaListaBuses.get(numeroBus).getConductor() != null) {
+                Conductor conductorAux = mapaListaBuses.get(numeroBus).getConductor();
+                int busAnterior = listaConductores.get(rutConductorNuevo).getNumeroDeBus();
+                mapaListaBuses.get(numeroBus).getConductor().setNumeroDeBus(busAnterior);
+                listaBuses.get(numeroBus - 1).getConductor().setNumeroDeBus(busAnterior);
+                listaConductores.get((mapaListaBuses.get(numeroBus).getConductor().getRut())).setNumeroDeBus(busAnterior);
+                mapaListaBuses.get(busAnterior).setConductor(conductorAux);
+                listaBuses.get(busAnterior - 1).setConductor(conductorAux);
+            }
+            listaConductores.get(rutConductorNuevo).setNumeroDeBus(numeroBus);
+            mapaListaBuses.get(numeroBus).setConductor(listaConductores.get(rutConductorNuevo));
+            listaBuses.get(numeroBus - 1).setConductor(listaConductores.get(rutConductorNuevo));
+
+            return "Operacion Exitosa, se ha cambiado el conductor";
+        }
     }
 
     public void llenarBuses() throws FileNotFoundException {

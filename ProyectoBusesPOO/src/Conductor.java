@@ -1,6 +1,6 @@
 public class Conductor extends Persona {
     //Atributos Conductor//
-    int numeroDeBus;
+    private int numeroDeBus;
     //constructor conductor//
     public Conductor(String nombre, String rut,int numeroDeBus){
         super(nombre,rut);

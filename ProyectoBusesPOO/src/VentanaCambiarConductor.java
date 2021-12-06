@@ -6,22 +6,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 
-public class AgregarBusPanel extends javax.swing.JFrame {
+public class VentanaCambiarConductor  extends javax.swing.JFrame{
     private JButton atrasButton;
-    private JTextField NroBusText;
-    private JTextField DestinoText;
     private JTextField RutConductorText;
-    private JTextField NConductorText;
-    private JPanel PanelAgregarBuses;
+    private JTextField NumBusText;
     private JButton confirmarButton;
+    private JButton guardarButton;
+    private JPanel CambiarConductorPanel;
     private JLabel EstadoLabel;
+    private JLabel IngreseRutLabel;
+    private JLabel IngreseNumBusLabel;
 
-    public AgregarBusPanel(String title, AgenciaBuses Gerencia) {
+    public VentanaCambiarConductor(String title, AgenciaBuses Gerencia) {
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(PanelAgregarBuses);
+        this.setContentPane(CambiarConductorPanel);
         this.setSize(600, 500);
-
+        guardarButton.setVisible(false);
         atrasButton.addActionListener(e -> {
             JFrame menuPrincipal = null;
             try {
@@ -34,7 +35,16 @@ public class AgregarBusPanel extends javax.swing.JFrame {
             dispose();
         });
         confirmarButton.addActionListener(e -> {
-            crearBus(Gerencia);
+            EstadoLabel.setText(Gerencia.cambiarConductor(RutConductorText.getText(), Integer.parseInt(NumBusText.getText())));
+            confirmarButton.setVisible(false);
+            RutConductorText.setVisible(false);
+            NumBusText.setVisible(false);
+            guardarButton.setVisible(true);
+            IngreseNumBusLabel.setVisible(false);
+            IngreseRutLabel.setVisible(false);
+
+        });
+        guardarButton.addActionListener(e -> {
             try{
                 File archivo = new File("reporte.txt");
                 File pasajerosAgencia = new File("PasajerosAgencia.txt");
@@ -65,17 +75,12 @@ public class AgregarBusPanel extends javax.swing.JFrame {
                 FileWriter buses = new FileWriter(busesAgencia);
                 bufferedWriter = new BufferedWriter(buses);
                 bufferedWriter.write(Gerencia.imprimirBusesArchivo());
-                bufferedWriter.close();
             }
             catch (Exception error){
                 error.printStackTrace();
             }
+            EstadoLabel.setText("Se ha guardado la operacion, presione atras para ir al menu principal");
+            guardarButton.setVisible(false);
         });
-    }
-    public void crearBus(AgenciaBuses Gerencia){
-        Conductor conductor = new Conductor(NConductorText.getText(),RutConductorText.getText(),Integer.parseInt(NroBusText.getText()));
-        Buses bus = new Buses(Integer.parseInt(NroBusText.getText()), DestinoText.getText(),conductor);
-        EstadoLabel.setText("Operacion Exitosa");
-        Gerencia.sumarBus(bus, conductor);
     }
 }
